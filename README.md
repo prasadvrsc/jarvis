@@ -2,6 +2,9 @@
 A modular personal copilot for small utilities, automation, and AI-assisted workflows.
 
 
-# Weather API 
-Weather data powered by WeatherAPI
-Docs: https://www.weatherapi.com/docs/
+## Current capabilities
+- Weather lookup using WeatherAPI with a formatted daily briefing
+
+
+## External services
+- Weather data powered by [WeatherAPI](https://www.weatherapi.com/docs/)

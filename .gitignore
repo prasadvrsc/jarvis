@@ -1,7 +1,15 @@
-.env
+# Python
 __pycache__/
 *.pyc
+.venv/
 
+
+# Environment / secrets
+.env
+
+# Local data (personal)
+.roadmap.md
+data/
 
 
 # Byte-compiled / optimized / DLL files
