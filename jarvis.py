@@ -2,8 +2,8 @@
 import sys
 from dotenv import load_dotenv
 
-from modules.weather import get_weather
-from modules.weather_briefing import format_weather_briefing
+from skills.weather import get_weather
+from formatters.weather_formatter import format_weather_briefing
 
 
 def main():
