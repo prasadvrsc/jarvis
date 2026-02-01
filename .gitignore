@@ -14,7 +14,7 @@ data/
 data/contacts.json
 
 
-# private docs (pick ONE strategy)
+# private docs
 docs/*.private.md
 
 
