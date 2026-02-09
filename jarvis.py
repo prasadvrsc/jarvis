@@ -64,8 +64,27 @@ def main():
                     f'{item["days_until"]}d: {item["name"]} — {item["type"]} ({item["date"]})'
                 )
             return
+    elif command == "briefing":
+        weather = get_weather()
+        weather_text = format_weather_briefing(weather)
 
-    print(f"Unknown milestone action: {action}")
+        items = upcoming_milestones(7)
+
+        print("📋 Daily Briefing\n")
+        print(weather_text)
+        print("")
+
+        if items:
+            print("🎉 Upcoming milestones (next 7 days):")
+            for item in items:
+                print(
+                    f"- {item['days_until']}d: {item['name']} - {item['type']} ({item['date']})"
+                )
+        else:
+            print("No upcoming milestones in the next 7 days.")
+        return
+
+        print(f"Unknown milestone action: {action}")
     return
 
 
