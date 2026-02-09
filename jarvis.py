@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from skills.weather import get_weather
 from skills.milestones import add_milestone, delete_milestone, upcoming_milestones
 from formatters.weather_formatter import format_weather_briefing
+from commands.briefing import run_briefing
 
 
 def main():
@@ -39,6 +40,7 @@ def main():
             name = sys.argv[4]
             iso_date = sys.argv[5]
             add_milestone(milestone_type, name, iso_date)
+            print(f"Unknown milestone action: {action}")
             return
 
         if action == "delete":
@@ -48,6 +50,7 @@ def main():
             milestone_type = sys.argv[3].lower()
             name = sys.argv[4]
             delete_milestone(milestone_type, name)
+            print(f"Unknown milestone action: {action}")
             return
 
         if action == "upcoming":
@@ -63,28 +66,10 @@ def main():
                 print(
                     f'{item["days_until"]}d: {item["name"]} — {item["type"]} ({item["date"]})'
                 )
+            print(f"Unknown milestone action: {action}")
             return
     elif command == "briefing":
-        weather = get_weather()
-        weather_text = format_weather_briefing(weather)
-
-        items = upcoming_milestones(7)
-
-        print("📋 Daily Briefing\n")
-        print(weather_text)
-        print("")
-
-        if items:
-            print("🎉 Upcoming milestones (next 7 days):")
-            for item in items:
-                print(
-                    f"- {item['days_until']}d: {item['name']} - {item['type']} ({item['date']})"
-                )
-        else:
-            print("No upcoming milestones in the next 7 days.")
-        return
-
-        print(f"Unknown milestone action: {action}")
+        run_briefing(sys.argv[2:])
     return
 
 
